@@ -5,16 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-  <style>    
-    /* Set black background color, white text and some padding */
-    footer {
-      background-color: #555;
-      color: white;
-      padding: 15px;
-    }
-  </style>
+  <script defer src="./src/blogger.js"></script>
+  <script defer src="./src/blog.js"></script>
 </head>
 <body>
   <nav class="navbar navbar-inverse">
@@ -29,7 +24,7 @@
       </div>
       <div class="collapse navbar-collapse" id="myNavbar">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="#">Home</a></li>
+          <li class="active"><a href="#">Review</a></li>
           <li><a href="#">Messages</a></li>
         </ul>
         <form class="navbar-form navbar-right" role="search">
@@ -49,111 +44,112 @@
     </div>
   </nav>
     
-    <div class="container text-center">    
-      <div class="row">
-        <div class="col-sm-3 well">
-          <div class="well">
-            <p><a href="#">Blogger Profiles</a></p>
-            <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar">
-          </div>
-          <div class="well">
-            <p><a href="#">Blog lists</a></p>
-            <p>
-              <span class="label label-default">Create New</span>
-              <span class="label label-primary">W3Schools</span>
-              <span class="label label-success">Labels</span>
-              <span class="label label-info">Football</span>
-              <span class="label label-warning">Gaming</span>
-              <span class="label label-danger">Friends</span>
-            </p>
-          </div>
-          <div class="alert alert-success fade in">
-            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-            <p><strong>Reviews</strong></p>
-            People are looking at blogs. Find out who.
-          </div>
+  <div class="container text-center">    
+    <div class="row">
+      <div class="col-sm-3 well">
+        <div class="well bloggersList">
+          <p><a href="#">Bloggers</a></p>
+          <!-- <img src="bird.jpg" class="img-circle" height="65" width="65" alt="Avatar"> -->
         </div>
-
-        <div class="col-sm-9">     
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="panel panel-default text-left">
-                <div class="panel-body">
-                  <!-- <div class="container"> -->
-                    <h2>Blog</h2>
-                    <ul class="nav nav-tabs">
-                      <li class="active"><a data-toggle="tab" href="#home">Home</a></li>
-                      <li><a data-toggle="tab" href="#menu1">Cole Davis</a></li>
-                      <li><a data-toggle="tab" href="#menu2">Esther Kim</a></li>
-                      <li><a data-toggle="tab" href="#menu3">Thach Luu</a></li>
-                    </ul>
-                  
-                    <div class="tab-content">
-                      <div id="home" class="tab-pane fade in active">
-                        <h3>HOME</h3>
-                          <div class="col-sm-12">
-                            <div class="well">
-                            <p>Bo</p>
-                            <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-                            </div>
-                          </div>
-                        </div>
-                            </div>
-                      <div id="menu1" class="tab-pane fade">
-                        <h3>Menu 1</h3>
-                        <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                      </div>
-                      <div id="menu2" class="tab-pane fade">
-                        <h3>Menu 2</h3>
-                        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
-                      </div>
-                      <div id="menu3" class="tab-pane fade">
-                        <h3>Menu 3</h3>
-                        <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-                      </div>
-                      <button type="button" class="btn btn-default btn-sm">
-                        <span class="glyphicon glyphicon-thumbs-up"></span> Like
-                      </button>     
-                    </div>
-                <!-- </div> -->
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="well">
-              <p>Jane</p>
-              <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-              </div>
-            </div>
-            <div class="col-sm-9">
-              <div class="well">
-                <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-3">
-              <div class="well">
-              <p>Anja</p>
-              <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar">
-              </div>
-            </div>
-            <div class="col-sm-9">
-              <div class="well">
-                <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
-              </div>
-            </div>
-          </div>     
+        <div class="well blogsList">
+          <p><a href="#">Blog lists</a></p>
+          <p>
+            <span class="label label-default">Blog 1</span>
+            <span class="label label-primary">Blog 2</span>
+            <span class="label label-success">Blog 3</span>
+            <span class="label label-info">Blog 4</span>
+            <span class="label label-warning">Blog 5</span>
+            <span class="label label-danger">Blog 6</span>
+          </p>
+        </div>
+        <div class="alert alert-success fade in">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+          <p><strong>Reviews</strong></p>
+          People are looking at blogs. Find out who.
         </div>
       </div>
+
+      <div class="col-sm-9">     
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="panel panel-default text-left">
+              <div class="panel-body">
+                <h2>Blog_Claper</h2>
+                <ul class="nav nav-tabs">
+                  <li class="active"><a data-toggle="tab" href="#home">Blog 1</a></li>
+                  <li><a data-toggle="tab" href="#menu1">Blog 2</a></li>
+                  <li><a data-toggle="tab" href="#menu2">Blog 3</a></li>
+                  <li><a data-toggle="tab" href="#menu3">Blog 4</a></li>
+                </ul>
+              
+                <div class="tab-content">
+                  <div id="home" class="tab-pane fade in active">
+                    <h3>img/link</h3>
+                      <div class="col-sm-12">
+                        <div class="well">
+                          <!-- <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar"> -->
+                          
+                        </div>
+                        <p>description</p>
+                        <p>liks</p>
+                        <p>comments</p>
+                      </div>
+                  </div>
+                </div>
+                  <div id="menu1" class="tab-pane fade">
+                    <h3>Menu 1</h3>
+                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                  </div>
+                  <div id="menu2" class="tab-pane fade">
+                    <h3>Menu 2</h3>
+                    <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.</p>
+                  </div>
+                  <div id="menu3" class="tab-pane fade">
+                    <h3>Menu 3</h3>
+                    <p>Eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                  </div>
+                  <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                  </button>     
+                </div>
+            </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+            <p>Jane</p>
+            <!-- <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar"> -->
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-3">
+            <div class="well">
+            <p>Anja</p>
+            <!-- <img src="bird.jpg" class="img-circle" height="55" width="55" alt="Avatar"> -->
+            </div>
+          </div>
+          <div class="col-sm-9">
+            <div class="well">
+              <p>Just Forgot that I had to mention something about someone to someone about how I forgot something, but now I forgot it. Ahh, forget it! Or wait. I remember.... no I don't.</p>
+            </div>
+          </div>
+        </div>     
+      </div>
     </div>
-  
+  </div>
+
     <footer class="container-fluid text-center">
-      <p>Clap the Blog</p>
+      <p>Clap the Blog as much you want~!!</p>
     </footer>
 
-  </body>
-  </html>
+</body>
+</html>
