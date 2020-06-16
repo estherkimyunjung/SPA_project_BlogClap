@@ -10,15 +10,18 @@ Blogger.destroy_all
 Blog.destroy_all
 Review.destroy_all
 
-blogger_a = Blogger.create(name: 'Cole')
-blogger_b = Blogger.create(name: 'Esther')
-blogger_c = Blogger.create(name: 'Thach')
+blogger_a = Blogger.create(name: 'Cole Davis')
+blogger_b = Blogger.create(name: 'Edwin Calvillo')
+blogger_c = Blogger.create(name: 'Freddy Flores')
+blogger_d = Blogger.create(name: 'Taiye Salami')
+blogger_e = Blogger.create(name: 'Thach Luu')
+blogger_f = Blogger.create(name: 'Yannick Djoumbi')
+blogger_g = Blogger.create(name: 'Esther Kim')
 
 blog_a = Blog.create(title: 'The Flaws of Communication', link: 'https://medium.com/@colebuildanddevelop/the-flaws-of-communication-e640f9b78420', description: 'Imagine two groups of allied gangs each on opposing sides of a city')
-blog_b = Blog.create(title: 'World Belongs to Me Through the Software Engineering', link: 'https://medium.com/@estherkimyunjung/world-belongs-to-me-through-software-engineering-a58de134967?source=friends_link&sk=430052bed992caeeea92fb8fba16bc6c', description: 'How to develop the growth mindset')
+blog_b = Blog.create(title: 'A = Abstraction', link: 'https://medium.com/@floresfreddy.ultra/a-abstraction-c78a27d17aaf', description: 'How code and life are nothing but embedded representations')
 blog_c = Blog.create(title: 'Ruby on Rails in 2020', link: 'https://medium.com/@luuphanbaothach/ruby-on-rails-in-2020-3d3c84976947', description: 'Ruby on Rails (RoR) is a web framework that is one of the most popular tools in web development')
-blog_d = Blog.create(title: 'I am Learning Vim?', link: 'https://medium.com/@colebuildanddevelop/i-am-learning-vim-2883fb0565e4', description: 'Vim is a text editor that optimizes for speed and efficiency.')
-blog_e = Blog.create(title: 'Powerful Regular Expression', link: 'https://medium.com/@estherkimyunjung/powerful-regular-expression-2c7a11592b40?source=friends_link&sk=5cf2c108ed408b3936ff08d6662fd778', description: 'Regular Expression Basic Rules and Patterns')
-blog_f = Blog.create(title: 'Screen Scraping for Real-time Poker Data', link: 'https://medium.com/@colebuildanddevelop/screen-scraping-for-real-time-poker-data-25053f572bab', description: 'scraped the screen for images of suits in order to compare them with images')
+blog_d = Blog.create(title: 'Powerful Regular Expression', link: 'https://medium.com/@estherkimyunjung/powerful-regular-expression-2c7a11592b40?source=friends_link&sk=5cf2c108ed408b3936ff08d6662fd778', description: 'Regular Expression Basic Rules and Patterns')
+blog_e = Blog.create(title: 'Front-end Design', link: 'https://medium.com/@calvillo.edwin/understanding-a-software-engineers-responsibility-to-front-end-design-9161c437cd55', description: 'Understanding a Software Engineer’s Responsibility to Front-end Design')
 
-review_a = Review.create(clap: 14, comment: 'Keep up the great work!', blogger: blogger_b, blog: blog_b)
+review_a = Review.create(clap: 14, comment: 'Keep up the great work!', blogger: blogger_g, blog: blog_d)

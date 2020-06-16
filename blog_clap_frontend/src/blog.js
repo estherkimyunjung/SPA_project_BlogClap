@@ -27,43 +27,32 @@ function showBlogs(blog){
   ulNavTab.append(li)
 
   iframe(blog, a)
-}
+{/* <button type="button" class="btn btn-default btn-sm">
+  👏 Clap
+</button>
+<button type="button" class="btn btn-default btn-sm">
+  Delete the Blog
+</button> */}
 
-{/* <div class="well blogIFrame">
-<!-- <iframe src="https://www.w3schools.com" title="W3Schools Free Online Web Tutorials"> -->
-<!-- </iframe> -->
-</div> */}
+}
 
 function iframe(blog, a){
   a.addEventListener('click', () => {
     iFrameLink.innerHTML = ''
     const h3 = document.createElement('h3')
     h3.innerText = blog.title
-    const iFrame = document.createElement('iframe')
-    iFrame.src = blog.link
+    // const iFrame = document.createElement('iframe')
+    // iFrame.src = blog.link
+    const a = document.createElement('a')
+    a.href = blog.link
+    a.innerText = 'Link'
     const p = document.createElement('p')
     p.innerText = blog.description
-    iFrameLink.append(h3, iFrame, p)
+    // iFrameLink.append(h3, iFrame, p)
+    iFrameLink.append(h3, a, p)
   })
 }
 
 
-
-
-
-
 // const options = makeOptions('POST', {title: title, link: link, description: description})
 
-/* <div id="home" class="tab-pane fade in active">
-<h3>img/link</h3>
-<div class="col-sm-12">
-  <div class="well">
-    <!-- <img src="bandmember.jpg" class="img-circle" height="55" width="55" alt="Avatar"> -->
-
-  </div>
-  <p>description</p>
-  <p>liks</p>
-  <p>comments</p>
-</div>
-</div>
-</div> */
