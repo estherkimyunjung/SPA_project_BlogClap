@@ -5,5 +5,4 @@ class BloggersController < ApplicationController
     render json: bloggers
   end
   
-
 end
