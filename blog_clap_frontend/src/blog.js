@@ -29,14 +29,6 @@ function showBlogs(blog){
 
   iframe(blog, a)
 
-  
-{/* <button type="button" class="btn btn-default btn-sm">
-  👏 Clap
-</button>
-<button type="button" class="btn btn-default btn-sm">
-  Delete the Blog
-</button> */}
-
 }
 
 function iframe(blog, a){
@@ -59,13 +51,22 @@ function iframe(blog, a){
 
     const btnBlogDelete = document.createElement('button')
     btnBlogDelete.innerText = 'Delete Blog'
+
+    btnBlogDelete.addEventListener('click', () => {
+      myFetch(`${urlBlog}/${blog.id}`, {method: 'DELETE'})
+      .then(() => {
+        divIFrameLink.remove()
+        // ulNavTab.remove()
+      })
+    })
+
     const btnBlogClap = document.createElement('button')
+    btnBlogClap.className = 'btnBlogClap'
     btnBlogClap.innerText = '👏 Clap'
     divBlogInfo.append(divIFrameLink, btnBlogClap, ` `, btnBlogDelete)
-  
+    // review()
   })
 }
 
 
-// const options = makeOptions('POST', {title: title, link: link, description: description})
 
