@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="styles.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <!-- <script defer async src="//cdn.embedly.com/widgets/platform.js" charset="UTF-8"></script> -->
   <script defer src="./src/index.js"></script>
   <script defer src="./src/blogger.js"></script>
   <script defer src="./src/blog.js"></script>
@@ -136,7 +137,7 @@
                 <div class="tab-content">
                   <div id="home" class="tab-pane fade in active">
                     <br>
-                    <div class="col-sm-12">
+                    <div class="col-sm-12 blogInfo">
                       <div class="well blogIFrame">
                         <!-- each blog detail information here -->
                       </div>
@@ -148,12 +149,6 @@
                 </button>
                 <button type="button" class="btn btn-default btn-sm">
                   Edit the Blog
-                </button>
-                <button type="button" class="btn btn-default btn-sm">
-                  👏 Clap
-                </button>
-                <button type="button" class="btn btn-default btn-sm">
-                  Delete the Blog
                 </button>
               </div>
             </div>
@@ -194,7 +189,18 @@
   <footer class="container-fluid text-center">
     <p>Clap the Blog as much you want~!!</p>
   </footer>
-
+  <script>
+    (function(w, d){
+     var id='embedly-platform', n = 'script';
+     if (!d.getElementById(id)){
+       w.embedly = w.embedly || function() {(w.embedly.q = w.embedly.q || []).push(arguments);};
+       var e = d.createElement(n); e.id = id; e.async=1;
+       e.src = ('https:' === document.location.protocol ? 'https' : 'http') + '://cdn.embedly.com/widgets/platform.js';
+       var s = d.getElementsByTagName(n)[0];
+       s.parentNode.insertBefore(e, s);
+     }
+    })(window, document);
+  </script>
 </body>
 
 </html>

@@ -8,7 +8,8 @@ myFetch(urlBlog)
 
 const divBlogs = document.querySelector('.blogsList')
 const ulNavTab = document.querySelector('.nav-tabs')
-const iFrameLink = document.querySelector('.blogIFrame')
+const divBlogInfo = document.querySelector('.blogInfo')
+const divIFrameLink = document.querySelector('.blogIFrame')
 
 function showBlogs(blog){
   const p = document.createElement('p')
@@ -27,6 +28,8 @@ function showBlogs(blog){
   ulNavTab.append(li)
 
   iframe(blog, a)
+
+  
 {/* <button type="button" class="btn btn-default btn-sm">
   👏 Clap
 </button>
@@ -38,18 +41,28 @@ function showBlogs(blog){
 
 function iframe(blog, a){
   a.addEventListener('click', () => {
-    iFrameLink.innerHTML = ''
-    const h3 = document.createElement('h3')
-    h3.innerText = blog.title
-    // const iFrame = document.createElement('iframe')
-    // iFrame.src = blog.link
+    divIFrameLink.innerHTML = ''
+    divBlogInfo.innerHTML = ''
+
+
+    const blockquote = document.createElement('blockquote')
+    blockquote.className = 'embedly-card'
+    const h4 = document.createElement('h4')
     const a = document.createElement('a')
     a.href = blog.link
-    a.innerText = 'Link'
+    a.innerText = blog.title
     const p = document.createElement('p')
     p.innerText = blog.description
-    // iFrameLink.append(h3, iFrame, p)
-    iFrameLink.append(h3, a, p)
+    h4.append(a)
+    blockquote.append(h4, p)
+    divIFrameLink.append(blockquote)
+
+    const btnBlogDelete = document.createElement('button')
+    btnBlogDelete.innerText = 'Delete Blog'
+    const btnBlogClap = document.createElement('button')
+    btnBlogClap.innerText = '👏 Clap'
+    divBlogInfo.append(divIFrameLink, btnBlogClap, ` `, btnBlogDelete)
+  
   })
 }
 
