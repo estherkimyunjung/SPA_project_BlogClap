@@ -2,12 +2,14 @@ class BlogsController < ApplicationController
 
   def show
     blog = Blog.find(params[:id])
-    render json: BlogSerializer.new(blog)
+    # render json: ReviewSerializer.new(reviews, options)
+
+    render json: BlogSerializer.new(blog, options)
   end
 
   def index
     blogs = Blog.all
-    render json: blogs
+    render json: BlogSerializer.new(blogs, options)
   end  
   
   def destroy
@@ -19,5 +21,11 @@ class BlogsController < ApplicationController
       render json: {error: 'Blog not Found!'}, status: 404
     end
   end
+
+
+  def options
+    options = {include: [:reviews]}
+  end
+
   
 end

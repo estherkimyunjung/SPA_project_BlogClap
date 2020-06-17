@@ -21,6 +21,6 @@ class ReviewsController < ApplicationController
   end
 
   def options
-    potions = {include: [:blogger, :blog]}
+    options = {include: [:blogger, :blog]}
   end
 end
