@@ -1,6 +1,6 @@
 myFetch(urlBlog)
 .then(blogsObj => {
-  for(const blog of blogsObj){
+  for(const blog of blogsObj.data){
     showBlogs(blog)
   }
 })
