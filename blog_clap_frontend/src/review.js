@@ -1,5 +1,5 @@
 myFetch(urlReview)
-.then(reviewsObj => {console.log(reviewsObj.data)
+.then(reviewsObj => {
   for(const review of reviewsObj.data){
     showReviews(review)
   }
@@ -8,6 +8,7 @@ myFetch(urlReview)
 function showReviews(review){
   const divReviews = document.querySelector('.reviewList')
   const p = document.createElement('p')
+  p.dataset.blogId = review.relationships.blog.data.id
   p.className = 'pReveiwList'
   p.innerText = `Blog ${review.relationships.blog.data.id} : "${review.attributes.comment}"  (Claps ${review.attributes.clap})`
   const a = document.createElement('a')
@@ -15,33 +16,37 @@ function showReviews(review){
   p.append(a)
   divReviews.append(p)
 
-  
-const panelBody = document.querySelector('.panel-body')
-// const spanClap = document.createElement('span')
-// spanClap.innerText = review.attributes.clap
-// panelBody.append(spanClap)
-
-panelBody.addEventListener('click', (e)=> {
-  // console.log('click')
-const btnBlogClap = document.querySelector('.btnBlogClap')
-// console.log(e.target)
-  if (e.target === btnBlogClap){
-
-    console.log('clap')
-
-      const options = {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          clap: 0
-        })
-      };
-      myFetch(`${urlReview}/${review.id}`, options)
-      .then(
-        console.log       
-      )
-  }
-})
+  clapBlog(review)
 }
+
+function clapBlog(review){
+
+  const panelBody = document.querySelector('.panel-body')
+  
+  panelBody.addEventListener('click', (e)=> {
+    debugger
+    const btnBlogClap = document.querySelector('.btnBlogClap')
+    const spanClap = document.querySelector(`.clapCount[data-blog-id="${review.id}"]`)
+    console.log("SPANCOUNT", spanClap.innerText)
+    console.log("DATACLAP", review.attributes.clap)
+    let clap = parseInt(spanClap.innerText, 10)
+  
+    if (e.target === btnBlogClap){
+  
+        const options = {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            clap: ++ clap
+          })
+        };
+        myFetch(`${urlReview}/${review.id}`, options)
+        .then( reviewsObj => {
+          console.log("PATCH", reviewsObj)
+          }
+        )
+    }
+  })
+}  

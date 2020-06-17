@@ -28,3 +28,4 @@ review_a = Review.create(clap: 14, comment: 'Keep up the great work!', blogger: 
 review_b = Review.create(clap: 10, comment: 'Thank you for sharing your blog!', blogger: blogger_c, blog: blog_b)
 review_c = Review.create(clap: 11, comment: 'This is interesting', blogger: blogger_e, blog: blog_c)
 review_d = Review.create(clap: 11, comment: "I'm looking forward to your next blog post", blogger: blogger_b, blog: blog_e)
+review_e = Review.create(clap: 11, comment: "I want to try this", blogger: blogger_g, blog: blog_d)
