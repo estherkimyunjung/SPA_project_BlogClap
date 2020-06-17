@@ -15,6 +15,17 @@ class ReviewsController < ApplicationController
     render json:ReviewSerializer.new(review)
   end
 
+
+def update
+  review = Review.find(params[:id])
+    if review.update(new_review_params)
+      render json: ReviewSerializer.new(reviews, options)
+    else
+      flash[:error] = "Something went wrong"
+      render json: ReviewSerializer.new(reviews, options)
+    end
+end
+
   private 
   def new_review_params
     params.require(:review).permit(:blog_id, :blogger_id, :clap, :comment, :created_at)

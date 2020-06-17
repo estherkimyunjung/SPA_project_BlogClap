@@ -16,27 +16,37 @@ function showReviews(review){
   p.append(a)
   divReviews.append(p)
 
-  
-const panelBody = document.querySelector('.panel-body')
-
-panelBody.addEventListener('click', (e)=> {
-  const btnBlogClap = document.querySelector('.btnBlogClap')
-  const spanClap = document.querySelector('.clapCount')
-
-  if (e.target === btnBlogClap){
-
-      const options = {
-        method: 'PATCH',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          clap: 0
-        })
-      };
-      myFetch(`${urlReview}/${review.id}`, options)
-      .then(
-      )
-  }
-})
+  clapBlog(review)
 }
+
+function clapBlog(review){
+
+  const panelBody = document.querySelector('.panel-body')
+  
+  panelBody.addEventListener('click', (e)=> {
+    debugger
+    const btnBlogClap = document.querySelector('.btnBlogClap')
+    const spanClap = document.querySelector(`.clapCount[data-blog-id="${review.id}"]`)
+    console.log("SPANCOUNT", spanClap.innerText)
+    console.log("DATACLAP", review.attributes.clap)
+    let clap = parseInt(spanClap.innerText, 10)
+  
+    if (e.target === btnBlogClap){
+  
+        const options = {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            clap: ++ clap
+          })
+        };
+        myFetch(`${urlReview}/${review.id}`, options)
+        .then( reviewsObj => {
+          console.log("PATCH", reviewsObj)
+          }
+        )
+    }
+  })
+}  

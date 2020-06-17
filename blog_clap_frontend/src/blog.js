@@ -61,10 +61,8 @@ const divIFrameLink = document.querySelector('.blogIFrame')
 
   const spanClap = document.createElement('span')
   spanClap.dataset.blogId = blog.id
-  console.log("BLOG", blog)
   spanClap.className = 'clapCount'
   spanClap.innerText = blog.attributes.clap
-  console.log(spanClap)
 
     callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete)
     createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDelete)
