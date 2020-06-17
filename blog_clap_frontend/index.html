@@ -12,6 +12,7 @@
   <script defer src="./src/index.js"></script>
   <script defer src="./src/blogger.js"></script>
   <script defer src="./src/blog.js"></script>
+  <script defer src="./src/review.js"></script>
 </head>
 
 <body>
@@ -111,15 +112,16 @@
       <div class="col-sm-5 well">
         <div class="well bloggersList">
           <p><a href="#">Bloggers</a></p>
+          <!-- Create Blogger lists by name -->
         </div>
         <div class="well blogsList">
           <p><a href="#">Blog lists</a></p>
           <!-- Create Blog lists by Title -->
         </div>
-        <div class="alert alert-success fade in">
+        <div class="alert alert-success fade in reviewList">
           <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
           <p><strong>Reviews</strong></p>
-          People are looking at blogs. Find out who.
+          <!-- Create Review lists by comment with Blog id -->
         </div>
       </div>
       
@@ -128,12 +130,12 @@
           <div class="col-sm-12">
             <div class="panel panel-default text-left">
               <div class="panel-body">
-                <button type="button" class="btn btn-default btn-sm">
+                <!-- <button type="button" class="btn btn-default btn-sm">
                   Create the Blog
                 </button>
                 <button type="button" class="btn btn-default btn-sm">
                   Edit the Blog
-                </button>      
+                </button>       -->
                 <h2>Clap Me All You Can!!</h2>
                 <ul class="nav nav-tabs">
                   <!-- create blog tab by li -->
@@ -188,7 +190,6 @@
   <footer class="container-fluid text-center">
     <p>Clap the Blog as much you want~!!</p>
   </footer>
-  <script src="./src/review.js"></script>
   <script>
     (function(w, d){
       var id='embedly-platform', n = 'script';

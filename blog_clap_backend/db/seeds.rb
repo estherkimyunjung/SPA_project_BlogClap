@@ -24,4 +24,6 @@ blog_c = Blog.create(title: 'Ruby on Rails in 2020', link: 'https://medium.com/@
 blog_d = Blog.create(title: 'Powerful Regular Expression', link: 'https://medium.com/@estherkimyunjung/powerful-regular-expression-2c7a11592b40?source=friends_link&sk=5cf2c108ed408b3936ff08d6662fd778', description: 'Regular Expression Basic Rules and Patterns')
 blog_e = Blog.create(title: 'Front-end Design', link: 'https://medium.com/@calvillo.edwin/understanding-a-software-engineers-responsibility-to-front-end-design-9161c437cd55', description: 'Understanding a Software Engineer’s Responsibility to Front-end Design')
 
-review_a = Review.create(clap: 14, comment: 'Keep up the great work!', blogger: blogger_g, blog: blog_d)
+review_a = Review.create(clap: 14, comment: 'Keep up the great work!', blogger: blogger_f, blog: blog_a)
+review_b = Review.create(clap: 10, comment: 'Thank you for sharing your blog!', blogger: blogger_g, blog: blog_b)
+review_c = Review.create(clap: 11, comment: 'Keep up the great work!', blogger: blogger_d, blog: blog_c)
