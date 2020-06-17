@@ -1,5 +1,5 @@
 myFetch(urlReview)
-.then(reviewsObj => {console.log(reviewsObj.data)
+.then(reviewsObj => {
   for(const review of reviewsObj.data){
     showReviews(review)
   }
@@ -18,17 +18,12 @@ function showReviews(review){
 
   
 const panelBody = document.querySelector('.panel-body')
-// const spanClap = document.createElement('span')
-// spanClap.innerText = review.attributes.clap
-// panelBody.append(spanClap)
-// const currentClapCount = q
-panelBody.addEventListener('click', (e)=> {
-  // console.log('click')
-const btnBlogClap = document.querySelector('.btnBlogClap')
-// console.log(e.target)
-  if (e.target === btnBlogClap){
 
-    // console.log('clap')
+panelBody.addEventListener('click', (e)=> {
+  const btnBlogClap = document.querySelector('.btnBlogClap')
+  const spanClap = document.querySelector('.clapCount')
+
+  if (e.target === btnBlogClap){
 
       const options = {
         method: 'PATCH',
@@ -41,7 +36,6 @@ const btnBlogClap = document.querySelector('.btnBlogClap')
       };
       myFetch(`${urlReview}/${review.id}`, options)
       .then(
-        // console.log       
       )
   }
 })

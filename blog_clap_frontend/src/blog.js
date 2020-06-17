@@ -2,7 +2,6 @@ myFetch(urlBlog)
 .then(blogsObj => {
   for(const blog of blogsObj.data){
     showBlogs(blog)
-    console.log("TEST", blog)
   }
 })
 
@@ -59,8 +58,16 @@ const divIFrameLink = document.querySelector('.blogIFrame')
     divIFrameLink.append(blockquote)
 
     const btnBlogDelete = document.createElement('button')
+
+  const spanClap = document.createElement('span')
+  spanClap.dataset.blogId = blog.id
+  console.log("BLOG", blog)
+  spanClap.className = 'clapCount'
+  spanClap.innerText = blog.attributes.clap
+  console.log(spanClap)
+
     callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete)
-    createBtnBlogClap(blog, divBlogInfo, divIFrameLink, btnBlogDelete)
+    createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDelete)
   })
 }
 
@@ -69,25 +76,23 @@ function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
   btnBlogDelete.innerText = 'Delete Blog'
   const pReview = document.querySelector(`p[data-blog-id="${blog.id}"]`)
   const spanBlog = document.querySelector(`span[data-blog-id="${blog.id}"]`)
-console.log(spanBlog)
   btnBlogDelete.addEventListener('click', () => {
     myFetch(`${urlBlog}/${blog.id}`, {method: 'DELETE'})
     .then(() => {
       divIFrameLink.remove()
       a.remove()
-      console.log(spanBlog)
         spanBlog.remove()
-        console.log(spanBlog)
         pReview.remove()
     })
   })
 }
 
 
-function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, btnBlogDelete){
-  const spanClap = document.createElement('span')
-  spanClap.dataset.blogId = blog.id
-  spanClap.innerText = 'Clap Count'
+function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDelete){
+  // const spanClap = document.createElement('span')
+  // spanClap.dataset.blogId = blog.id
+  // spanClap.className = 'clapCount'
+  // spanClap.innerText = 'Clap Count'
   const btnBlogClap = document.createElement('button')
   btnBlogClap.dataset.blogId = blog.id
   btnBlogClap.className = 'btnBlogClap'
