@@ -1,7 +1,8 @@
 myFetch(urlBlog)
 .then(blogsObj => {
-  for(const blog of blogsObj){
+  for(const blog of blogsObj.data){
     showBlogs(blog)
+    console.log("TEST", blog)
   }
 })
 
@@ -13,7 +14,8 @@ function showBlogs(blog){
   const p = document.createElement('p')
   const span = document.createElement('span')
   span.classList.add('label', 'label-primary', 'spanBlogList')
-  span.innerText = `Blog ${blog.id} :  "${blog.title}"`
+  span.dataset.blogId = blog.id
+  span.innerText = `Blog ${blog.id} :  "${blog.attributes.title}"`
   p.append(span)
   divBlogs.append(p)
 
@@ -46,11 +48,11 @@ const divIFrameLink = document.querySelector('.blogIFrame')
     const h4 = document.createElement('h4')
 
     const aLink = document.createElement('a')
-    aLink.href = blog.link
-    aLink.innerText = blog.title
+    aLink.href = blog.attributes.link
+    aLink.innerText = blog.attributes.title
 
     const p = document.createElement('p')
-    p.innerText = blog.description
+    p.innerText = blog.attributes.description
 
     h4.append(aLink)
     blockquote.append(h4, p)
@@ -58,32 +60,37 @@ const divIFrameLink = document.querySelector('.blogIFrame')
 
     const btnBlogDelete = document.createElement('button')
     callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete)
-    createBtnBlogClap(divBlogInfo, divIFrameLink, btnBlogDelete)
+    createBtnBlogClap(blog, divBlogInfo, divIFrameLink, btnBlogDelete)
   })
 }
 
 
 function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
   btnBlogDelete.innerText = 'Delete Blog'
-  const pReview = document.querySelector('.pReveiwList')
-  const spanBlog = document.querySelector('.spanBlogList')
-
+  const pReview = document.querySelector(`p[data-blog-id="${blog.id}"]`)
+  const spanBlog = document.querySelector(`span[data-blog-id="${blog.id}"]`)
+console.log(spanBlog)
   btnBlogDelete.addEventListener('click', () => {
     myFetch(`${urlBlog}/${blog.id}`, {method: 'DELETE'})
     .then(() => {
       divIFrameLink.remove()
       a.remove()
-      
-      spanBlog.remove()
-      pReview.remove()
+      console.log(spanBlog)
+        spanBlog.remove()
+        console.log(spanBlog)
+        pReview.remove()
     })
   })
 }
 
 
-function createBtnBlogClap(divBlogInfo, divIFrameLink, btnBlogDelete){
+function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, btnBlogDelete){
+  const spanClap = document.createElement('span')
+  spanClap.dataset.blogId = blog.id
+  spanClap.innerText = 'Clap Count'
   const btnBlogClap = document.createElement('button')
+  btnBlogClap.dataset.blogId = blog.id
   btnBlogClap.className = 'btnBlogClap'
   btnBlogClap.innerText = '👏 Clap'
-  divBlogInfo.append(divIFrameLink, btnBlogClap, ` `, btnBlogDelete)
+  divBlogInfo.append(divIFrameLink, spanClap, ` `, btnBlogClap, ` `, btnBlogDelete)
 }

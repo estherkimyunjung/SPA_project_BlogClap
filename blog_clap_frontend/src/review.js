@@ -8,6 +8,7 @@ myFetch(urlReview)
 function showReviews(review){
   const divReviews = document.querySelector('.reviewList')
   const p = document.createElement('p')
+  p.dataset.blogId = review.relationships.blog.data.id
   p.className = 'pReveiwList'
   p.innerText = `Blog ${review.relationships.blog.data.id} : "${review.attributes.comment}"  (Claps ${review.attributes.clap})`
   const a = document.createElement('a')
@@ -20,14 +21,14 @@ const panelBody = document.querySelector('.panel-body')
 // const spanClap = document.createElement('span')
 // spanClap.innerText = review.attributes.clap
 // panelBody.append(spanClap)
-
+// const currentClapCount = q
 panelBody.addEventListener('click', (e)=> {
   // console.log('click')
 const btnBlogClap = document.querySelector('.btnBlogClap')
 // console.log(e.target)
   if (e.target === btnBlogClap){
 
-    console.log('clap')
+    // console.log('clap')
 
       const options = {
         method: 'PATCH',
@@ -40,7 +41,7 @@ const btnBlogClap = document.querySelector('.btnBlogClap')
       };
       myFetch(`${urlReview}/${review.id}`, options)
       .then(
-        console.log       
+        // console.log       
       )
   }
 })
