@@ -28,6 +28,16 @@ class ReviewsController < ApplicationController
       end
   end
 
+  def destroy
+    review = Review.find(params[:id])
+    unless review.nil?
+      review.destroy
+      render json: review
+    else
+      render json: {error: 'Review not Found!'}, status: 404
+    end
+  end
+
   private 
   def new_review_params
     params.require(:review).permit(:blog_id, :blogger_id, :clap, :comment)

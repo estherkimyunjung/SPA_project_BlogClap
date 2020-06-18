@@ -12,10 +12,6 @@ function makeOptions(method, body){
     method: method,
     headers: {
       'Content-Type': 'application/json',
-      // 'Content-Security-Policy': `frame-ancestors 'self' https://medium.com`,
-      // 'Content-Security-Policy': frame-ancestors https://medium.com,
-      // 'Content-Security-Policy': 'default-src https://medium.com',
-      // 'Content-Security-Policy': `default-src 'self'; img-src *; media-src media1.com media2.com; script-src userscripts.medium.com`,
       'Accept': 'application/json'
     },
     body: JSON.stringify(body)

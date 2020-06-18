@@ -13,10 +13,23 @@ function showReviews(review){
   p.dataset.blogId = review.relationships.blog.data.id
   p.className = 'pReveiwList'
   p.innerText = `Blog ${review.relationships.blog.data.id} : "${review.attributes.comment}"  (Claps ${review.attributes.clap})`
-  const a = document.createElement('a')
+  const btnReviewDelete = document.createElement('button')
+  btnReviewDelete.innerText = 'Delete ^ Review'
 
-  divReviews.append(p)
+  btnReviewDeleteEvent(p, review, btnReviewDelete)
+  divReviews.append(p, btnReviewDelete)
+}
 
+function btnReviewDeleteEvent(p, review, btnReviewDelete){
+
+  btnReviewDelete.addEventListener('click', () => {
+
+    myFetch(`${urlReview}/${review.id}`, {method: 'DELETE'})
+    .then(() => {
+      p.remove()
+      btnReviewDelete.remove()
+    })
+  })
 }
 
 

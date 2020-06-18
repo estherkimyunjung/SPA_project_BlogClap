@@ -2,8 +2,6 @@ class BlogsController < ApplicationController
 
   def show
     blog = Blog.find(params[:id])
-    # render json: ReviewSerializer.new(reviews, options)
-
     render json: BlogSerializer.new(blog, options)
   end
 
@@ -22,10 +20,8 @@ class BlogsController < ApplicationController
     end
   end
 
-
   def options
     options = {include: [:reviews]}
   end
 
-  
 end
