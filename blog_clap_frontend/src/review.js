@@ -24,7 +24,7 @@ function clapBlog(review){
   const panelBody = document.querySelector('.panel-body')
   
   panelBody.addEventListener('click', (e)=> {
-    debugger
+   
     const btnBlogClap = document.querySelector('.btnBlogClap')
     const spanClap = document.querySelector(`.clapCount[data-blog-id="${review.id}"]`)
     console.log("SPANCOUNT", spanClap.innerText)
