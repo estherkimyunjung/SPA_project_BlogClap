@@ -19,6 +19,7 @@ function showBlogs(blog){
 
   const li = document.createElement('li')
   const a = document.createElement('a')
+  a.className = 'tabBlogList'
   a.setAttribute("data-toggle", "tab")
   a.innerText = `Blog ${blog.id}`
 
@@ -66,6 +67,12 @@ function iframe(blog, a){
     h3Clap.className = 'clapCount'
     h3Clap.innerText = blog.attributes.clap
     BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete)
+
+    let clapNum = document.querySelector('.clapCount')
+    myFetch(`${urlBlog}/${blog.id}`)
+    .then((blog) => {
+        clapNum.innerText = blog.data.attributes.clap      
+    })
   })
 }
 
@@ -127,6 +134,7 @@ function BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete){
 
   divBlogInfo.append(h3Clap, divIFrameLink, newClap,` `, btnBlogClap,` `, btnBlogDelete, form)
 }
+
 
 function blogClapEvent(form, blog){
 

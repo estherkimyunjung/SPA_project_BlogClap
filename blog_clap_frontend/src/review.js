@@ -22,6 +22,7 @@ function showReviews(review){
   divReviews.append(p, btnReviewDelete)
 }
 
+
 function btnReviewDeleteEvent(p, review, btnReviewDelete){
 
   btnReviewDelete.addEventListener('click', () => {
