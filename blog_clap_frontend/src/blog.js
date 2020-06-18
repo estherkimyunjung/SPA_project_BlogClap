@@ -35,6 +35,8 @@ function iframe(blog, a){
 const divBlogInfo = document.querySelector('.blogInfo')
 const divIFrameLink = document.querySelector('.blogIFrame')
 
+
+
   a.addEventListener('click', () => {
     divIFrameLink.innerHTML = ''
     divBlogInfo.innerHTML = ''
@@ -72,6 +74,7 @@ const divIFrameLink = document.querySelector('.blogIFrame')
 
 function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
   btnBlogDelete.innerText = 'Delete Blog'
+  const blogInfo = document.querySelector('.blogInfo')
   const pReview = document.querySelector(`p[data-blog-id="${blog.id}"]`)
   const spanBlog = document.querySelector(`span[data-blog-id="${blog.id}"]`)
   btnBlogDelete.addEventListener('click', () => {
@@ -79,8 +82,10 @@ function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
     .then(() => {
       divIFrameLink.remove()
       a.remove()
-        spanBlog.remove()
-        pReview.remove()
+      //   spanBlog.remove()
+      //   pReview.remove()
+      blogInfo.innerText = ''
+        
     })
   })
 }
@@ -91,9 +96,50 @@ function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDe
   // spanClap.dataset.blogId = blog.id
   // spanClap.className = 'clapCount'
   // spanClap.innerText = 'Clap Count'
+  const newClap = document.createElement('span')
+  newClap.id = 'new_clap'
+  newClap.innerText = 0
   const btnBlogClap = document.createElement('button')
   btnBlogClap.dataset.blogId = blog.id
   btnBlogClap.className = 'btnBlogClap'
   btnBlogClap.innerText = '👏 Clap'
-  divBlogInfo.append(divIFrameLink, spanClap, ` `, btnBlogClap, ` `, btnBlogDelete)
+
+  const form = document.createElement('form')
+  form.className = 'commnetForm'
+  const labelComment = document.createElement('label')
+  labelComment.innerText = 'Comment Here : '
+  const inputComment = document.createElement('input')
+  inputComment.dataset.blogId = blog.id
+  inputComment.className = 'inputComment'
+  inputComment.type = 'text'
+  const btnSubmit = document.createElement('input')
+  btnSubmit.dataset.blogId = blog.id
+  btnSubmit.type = 'submit'
+  form.append(labelComment, inputComment, ` `, btnSubmit)
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault()
+
+    const comment = document.querySelector('.inputComment').value
+    const newClap = document.querySelector('#new_clap').innerText
+    const options = makeOptions('POST', {review: {blog_id: blog.id, blogger_id: 1, clap: newClap, comment: comment}})
+
+    myFetch(urlReview, options)
+      .then(
+        reviewComment => {
+          showReviews(reviewComment.data)
+        const span = document.querySelector('.clapCount')
+        console.log(reviewComment)
+        console.log("TRY TOTTAL", blog.attributes.clap)
+        span.innerText = blog.attributes.clap + reviewComment.data.attributes.clap
+        form.reset()
+        const newClap = document.querySelector('#new_clap')
+          newClap.innerText = 0
+        }
+      )
+  })
+
+  divBlogInfo.append(spanClap, ` `, divIFrameLink, ` `, newClap, btnBlogClap, ` `, btnBlogDelete, form)
 }
+
+
