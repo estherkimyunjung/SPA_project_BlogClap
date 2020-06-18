@@ -7,6 +7,7 @@ myFetch(urlBlog)
 
 
 function showBlogs(blog){
+
   const divBlogs = document.querySelector('.blogsList')
   const ulNavTab = document.querySelector('.nav-tabs')
 
@@ -15,14 +16,14 @@ function showBlogs(blog){
   span.classList.add('label', 'label-primary', 'spanBlogList')
   span.dataset.blogId = blog.id
   span.innerText = `Blog ${blog.id} :  "${blog.attributes.title}"`
-  p.append(span)
-  divBlogs.append(p)
 
   const li = document.createElement('li')
   const a = document.createElement('a')
   a.setAttribute("data-toggle", "tab")
-  // a.setAttribute("href", `#menu${blog.id}`)
   a.innerText = `Blog ${blog.id}`
+
+  p.append(span)
+  divBlogs.append(p)
   li.append(a)
   ulNavTab.append(li)
 
@@ -32,17 +33,16 @@ function showBlogs(blog){
 
 
 function iframe(blog, a){
-const divBlogInfo = document.querySelector('.blogInfo')
-const divIFrameLink = document.querySelector('.blogIFrame')
 
-
+  const divBlogInfo = document.querySelector('.blogInfo')
+  const divIFrameLink = document.querySelector('.blogIFrame')
 
   a.addEventListener('click', () => {
+
     divIFrameLink.innerHTML = ''
     divBlogInfo.innerHTML = ''
 
     const panelBody = document.querySelector('.panel-body')
-
     const blockquote = document.createElement('blockquote')
     blockquote.className = 'embedly-card'
 
@@ -60,42 +60,47 @@ const divIFrameLink = document.querySelector('.blogIFrame')
     divIFrameLink.append(blockquote)
 
     const btnBlogDelete = document.createElement('button')
+    BlogDelete(blog, divIFrameLink, a, btnBlogDelete)
 
-  const spanClap = document.createElement('span')
-  spanClap.dataset.blogId = blog.id
-  spanClap.className = 'clapCount'
-  spanClap.innerText = blog.attributes.clap
+    const h3Clap = document.createElement('h3')
+    h3Clap.dataset.blogId = blog.id
+    h3Clap.className = 'clapCount'
+    h3Clap.innerText = blog.attributes.clap
+    BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete)
 
-    callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete)
-    createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDelete)
   })
 }
 
 
-function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
+function BlogDelete(blog, divIFrameLink, a, btnBlogDelete){
+
   btnBlogDelete.innerText = 'Delete Blog'
   const blogInfo = document.querySelector('.blogInfo')
   const pReview = document.querySelector(`p[data-blog-id="${blog.id}"]`)
   const spanBlog = document.querySelector(`span[data-blog-id="${blog.id}"]`)
+
+  BlogDeleteEvent(btnBlogDelete, blog, divIFrameLink, a, spanBlog, pReview, blogInfo)
+}
+
+
+function BlogDeleteEvent(btnBlogDelete, blog, divIFrameLink, a, spanBlog, pReview, blogInfo){
+
   btnBlogDelete.addEventListener('click', () => {
+
     myFetch(`${urlBlog}/${blog.id}`, {method: 'DELETE'})
     .then(() => {
       divIFrameLink.remove()
       a.remove()
         spanBlog.remove()
         pReview.remove()
-      blogInfo.innerText = ''
-        
+        blogInfo.innerText = ''
     })
   })
 }
 
 
-function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDelete){
-  // const spanClap = document.createElement('span')
-  // spanClap.dataset.blogId = blog.id
-  // spanClap.className = 'clapCount'
-  // spanClap.innerText = 'Clap Count'
+function BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete){
+
   const newClap = document.createElement('span')
   newClap.id = 'new_clap'
   newClap.innerText = 0
@@ -115,7 +120,15 @@ function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDe
   const btnSubmit = document.createElement('input')
   btnSubmit.dataset.blogId = blog.id
   btnSubmit.type = 'submit'
-  form.append(labelComment, inputComment, ` `, btnSubmit)
+  form.append(labelComment,` `, inputComment, ` `, btnSubmit)
+
+  blogClapEvent(form, blog)
+
+  divBlogInfo.append(h3Clap, divIFrameLink, newClap,` `, btnBlogClap,` `, btnBlogDelete, form)
+
+}
+
+function blogClapEvent(form, blog){
 
   form.addEventListener('submit', (e) => {
     e.preventDefault()
@@ -125,21 +138,14 @@ function createBtnBlogClap(blog, divBlogInfo, divIFrameLink, spanClap, btnBlogDe
     const options = makeOptions('POST', {review: {blog_id: blog.id, blogger_id: 1, clap: newClap, comment: comment}})
 
     myFetch(urlReview, options)
-      .then(
-        reviewComment => {
-          showReviews(reviewComment.data)
+    .then(reviewComment => {
+        showReviews(reviewComment.data)
         const span = document.querySelector('.clapCount')
-        console.log(reviewComment)
-        console.log("TRY TOTTAL", blog.attributes.clap)
         span.innerText = blog.attributes.clap + reviewComment.data.attributes.clap
-        form.reset()
         const newClap = document.querySelector('#new_clap')
-          newClap.innerText = 0
-        }
-      )
+        newClap.innerText = 0
+        form.reset()
+    })
   })
-
-  divBlogInfo.append(spanClap, ` `, divIFrameLink, ` `, newClap, btnBlogClap, ` `, btnBlogDelete, form)
 }
-
 
