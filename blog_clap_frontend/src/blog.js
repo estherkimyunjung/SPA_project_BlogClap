@@ -84,14 +84,17 @@ function BlogDelete(blog, divIFrameLink, a, btnBlogDelete){
 function BlogDeleteEvent(btnBlogDelete, blog, divIFrameLink, a, spanBlog, pReview, blogInfo){
 
   btnBlogDelete.addEventListener('click', () => {
-
+    
+    let btnRvDel = document.querySelector(`.reviewDelet[data-blog-id="${blog.id}"]`)
+    
     myFetch(`${urlBlog}/${blog.id}`, {method: 'DELETE'})
     .then(() => {
       divIFrameLink.remove()
       a.remove()
-        spanBlog.remove()
-        pReview.remove()
-        blogInfo.innerText = ''
+      btnRvDel.remove()
+      spanBlog.remove()
+      pReview.remove()
+      blogInfo.innerText = ''
     })
   })
 }

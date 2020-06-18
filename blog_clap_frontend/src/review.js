@@ -14,6 +14,8 @@ function showReviews(review){
   p.className = 'pReveiwList'
   p.innerText = `Blog ${review.relationships.blog.data.id} : "${review.attributes.comment}"  (Claps ${review.attributes.clap})`
   const btnReviewDelete = document.createElement('button')
+  btnReviewDelete.className = 'reviewDelet'
+  btnReviewDelete.dataset.blogId = review.relationships.blog.data.id
   btnReviewDelete.innerText = 'Delete ^ Review'
 
   btnReviewDeleteEvent(p, review, btnReviewDelete)
