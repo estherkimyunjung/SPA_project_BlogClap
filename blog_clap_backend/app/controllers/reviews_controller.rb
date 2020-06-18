@@ -47,3 +47,4 @@ class ReviewsController < ApplicationController
     options = {include: [:blogger, :blog]}
   end
 end
+

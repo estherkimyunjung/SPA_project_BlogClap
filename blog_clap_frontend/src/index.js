@@ -17,3 +17,4 @@ function makeOptions(method, body){
     body: JSON.stringify(body)
   }
 }
+

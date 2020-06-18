@@ -28,7 +28,6 @@ function showBlogs(blog){
   ulNavTab.append(li)
 
   iframe(blog, a)
-
 }
 
 
@@ -67,7 +66,6 @@ function iframe(blog, a){
     h3Clap.className = 'clapCount'
     h3Clap.innerText = blog.attributes.clap
     BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete)
-
   })
 }
 
@@ -125,7 +123,6 @@ function BlogClap(blog, divBlogInfo, divIFrameLink, h3Clap, btnBlogDelete){
   blogClapEvent(form, blog)
 
   divBlogInfo.append(h3Clap, divIFrameLink, newClap,` `, btnBlogClap,` `, btnBlogDelete, form)
-
 }
 
 function blogClapEvent(form, blog){
