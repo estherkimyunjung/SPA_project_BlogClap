@@ -82,8 +82,8 @@ function callBtnBlogDelete(blog, divIFrameLink, a, btnBlogDelete){
     .then(() => {
       divIFrameLink.remove()
       a.remove()
-      //   spanBlog.remove()
-      //   pReview.remove()
+        spanBlog.remove()
+        pReview.remove()
       blogInfo.innerText = ''
         
     })
