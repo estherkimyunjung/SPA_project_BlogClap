@@ -26,9 +26,15 @@ function btnReviewDeleteEvent(p, review, btnReviewDelete){
 
   btnReviewDelete.addEventListener('click', () => {
 
+    let clapNum = document.querySelector('.clapCount')
     myFetch(`${urlReview}/${review.id}`, {method: 'DELETE'})
-    .then(() => {
+    .then((review) => {
       p.remove()
+
+      if (clapNum && parseInt(clapNum.dataset.blogId) === review.blog_id){
+        let num = parseInt(clapNum.innerText) - review.clap
+        clapNum.innerText = num
+      }
       btnReviewDelete.remove()
     })
   })
