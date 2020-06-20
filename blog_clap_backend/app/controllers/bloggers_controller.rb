@@ -1,5 +1,4 @@
 class BloggersController < ApplicationController
-
   def index
     bloggers = Blogger.all
     render json: bloggers
@@ -18,6 +17,4 @@ class BloggersController < ApplicationController
   def new_blogger_params
     params.require(:blogger).permit(:name)
   end
-
 end
-

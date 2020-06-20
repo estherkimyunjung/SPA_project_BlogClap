@@ -11,7 +11,6 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2020_06_15_043913) do
-
   create_table "bloggers", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false

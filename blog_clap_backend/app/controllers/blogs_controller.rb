@@ -1,7 +1,6 @@
 class BlogsController < ApplicationController
-
   def show
-    blog = Blog.find(params[:id])
+    blog = Blog.find_by_id(params[:id])
     render json: BlogSerializer.new(blog, options)
   end
 
@@ -11,7 +10,7 @@ class BlogsController < ApplicationController
   end  
   
   def destroy
-    blog = Blog.find(params[:id])
+    blog = Blog.find_by_id(params[:id])
     unless blog.nil?
       blog.destroy
       render json: blog
@@ -23,6 +22,4 @@ class BlogsController < ApplicationController
   def options
     options = {include: [:reviews]}
   end
-
 end
-

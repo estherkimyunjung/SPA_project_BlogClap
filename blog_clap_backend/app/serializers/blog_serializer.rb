@@ -5,6 +5,5 @@ class BlogSerializer
 
   attribute :clap do |object|
     object.getClaps
-  end
-  
+  end  
 end

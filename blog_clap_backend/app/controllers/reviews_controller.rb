@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
-
   def show
-    review = Review.find(params[:id])
+    review = Review.find_by_id(params[:id])
     render json: ReviewSerializer.new(review, options)
   end
 
@@ -20,7 +19,7 @@ class ReviewsController < ApplicationController
   end
 
   def update
-    review = Review.find(params[:id])
+    review = Review.find_by_id(params[:id])
       if review.update(new_review_params)
         render json: ReviewSerializer.new(reviews, options)
       else
@@ -29,7 +28,7 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    review = Review.find(params[:id])
+    review = Review.find_by_id(params[:id])
     unless review.nil?
       review.destroy
       render json: review
@@ -47,4 +46,3 @@ class ReviewsController < ApplicationController
     options = {include: [:blogger, :blog]}
   end
 end
-
